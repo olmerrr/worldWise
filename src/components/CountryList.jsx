@@ -2,8 +2,11 @@ import style from "./CountryList.module.css";
 import Spinner from "./Spinner.jsx";
 import Message from "./Message.jsx";
 import CountryItem from "./CountryItem.jsx";
+import { useCities } from "../contexts/CitiesContext.jsx";
 
-export default function CountryList({ cities, isLoading }) {
+export default function CountryList() {
+  const { cities, isLoading } = useCities();
+
   if (isLoading) return <Spinner />;
   if (!cities.length) return <Message message="No data available" />;
 
