@@ -1,14 +1,19 @@
-import Message from "./Message.jsx";
+import "react-datepicker/dist/react-datepicker.css";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client"
 
 import { useEffect, useState } from "react";
 
+import { useUrlPosition } from "../hooks/useUrlPosition.js";
+
 import styles from "./Form.module.css";
 import Button from "./Button.jsx";
+import Message from "./Message.jsx";
 import BackButton from "./BackButton.jsx";
-import { useUrlPosition } from "../hooks/useUrlPosition.js";
 import Spinner from "./Spinner.jsx";
+import DatePicker from "react-datepicker";
+import { useCities } from "../contexts/CitiesContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 
 export function convertToEmoji(countryCode) {
@@ -21,7 +26,7 @@ export function convertToEmoji(countryCode) {
 
 function Form() {
   const [ cityName, setCityName ] = useState("");
-  const [ countryName, setCountry ] = useState("");
+  const [ country, setCountry ] = useState("");
   const [ date, setDate ] = useState(new Date());
   const [ notes, setNotes ] = useState("");
   const [ isLoadingGeocoding, setIsLoadingGeocoding ] = useState(false);
@@ -29,9 +34,28 @@ function Form() {
   const [ geocodingError, setGeocodingError ] = useState("");
 
   const [ lat, lng ] = useUrlPosition();
-
+  const {createCity, isLoading} = useCities();
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(!cityName || !date) return;
+    const newCity   =  {
+      cityName,
+      country,
+      emoji,
+      date,
+      notes,
+      position: {
+        lat,
+        lng
+      }
+    };
+    createCity(newCity);
+    await navigate(`/app/cities`);
+  };
 
   useEffect(() => {
+    if (!lat && !lng) return;
     async function fetchCityData() {
       try {
         setIsLoadingGeocoding(true);
@@ -39,11 +63,12 @@ function Form() {
         const res = await fetch(`${BASE_URL}?latitude=${lat}&longitude=${lng}`);
         const data = await res.json();
 
+        if (!lat && !lng) return <Message message="Start by clicking somewhere on the map."/>
         if ( isLoadingGeocoding ) return <Spinner />
         if ( !data.countryCode ) throw new Error("Click on city  or close to city please");
 
         setCityName(data.city || data.locality || "")
-        setCountry(data.country || data.locality || "")
+        setCountry(data.countryName || data.locality || data.city || "")
         setEmoji(convertToEmoji(data.countryCode))
       } catch ( err ) {
         setGeocodingError(err.message);
@@ -58,7 +83,7 @@ function Form() {
 
   if (geocodingError) return <Message message={geocodingError}/>
   return (
-    <form className={styles.form}>
+    <form className={`${styles.form} ${isLoading ? styles.loading : ""}`} onSubmit={handleSubmit}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
@@ -71,10 +96,16 @@ function Form() {
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
-        <input
+        {/*<input*/}
+        {/*  id="date"*/}
+        {/*  onChange={(e) => setDate(e.target.value)}*/}
+        {/*  value={date}*/}
+        {/*/>*/}
+        <DatePicker
           id="date"
-          onChange={(e) => setDate(e.target.value)}
-          value={date}
+          onChange={date => setDate(date)}
+          selected={date}
+          dateFormat="dd/MM/yyyy"
         />
       </div>
 
@@ -91,6 +122,7 @@ function Form() {
         <Button type="primary">Add</Button>
         <BackButton/>
       </div>
+      {isLoading && <Spinner />}
     </form>
   );
 }

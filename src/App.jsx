@@ -12,7 +12,6 @@ import CountryList from "./components/CountryList.jsx";
 import City from "./components/City.jsx";
 import Form from "./components/Form.jsx";
 import { CitiesProvider } from "./contexts/CitiesContext.jsx";
-import { useContext } from "react";
 
 function App() {
 
