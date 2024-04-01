@@ -1,16 +1,100 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
+      "id": "6ff1",
+      "cityName": "Guercif",
+      "country": "Morocco",
+      "emoji": "🇲🇦",
+      "date": "2024-03-29T15:30:57.394Z",
+      "notes": "",
       "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": "73930385"
+        "lat": "34.21634468843465",
+        "lng": "-3.40576171875"
+      }
+    },
+    {
+      "id": "63ec",
+      "cityName": "Souk El Arbaa",
+      "country": "Morocco",
+      "emoji": "🇲🇦",
+      "date": "2024-03-29T15:36:41.116Z",
+      "notes": "",
+      "position": {
+        "lat": "34.88593094075317",
+        "lng": "-5.844726562500001"
+      }
+    },
+    {
+      "id": "0253",
+      "cityName": "Cozar",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-03-29T15:43:51.999Z",
+      "notes": "",
+      "position": {
+        "lat": "38.65119833229951",
+        "lng": "-3.0761718750000004"
+      }
+    },
+    {
+      "id": "b3c6",
+      "cityName": "Madrid",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-03-29T15:44:23.056Z",
+      "notes": "",
+      "position": {
+        "lat": "40.34654412118006",
+        "lng": "-3.6914062500000004"
+      }
+    },
+    {
+      "id": "4a46",
+      "cityName": "Tabuenca",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-03-29T15:44:45.410Z",
+      "notes": "",
+      "position": {
+        "lat": "41.623655390686395",
+        "lng": "-1.5161132812500002"
+      }
+    },
+    {
+      "id": "effb",
+      "cityName": "Fuentelencina",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-03-29T15:45:40.177Z",
+      "notes": "",
+      "position": {
+        "lat": "40.54720023441049",
+        "lng": "-2.8564453125000004"
+      }
+    },
+    {
+      "id": "e910",
+      "cityName": "Albalate de las Nogueras",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-03-29T15:45:53.303Z",
+      "notes": "",
+      "position": {
+        "lat": "40.34654412118006",
+        "lng": "-2.3291015625000004"
+      }
+    },
+    {
+      "id": "a18d",
+      "cityName": "Sevilleja de la Jara",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-03-29T15:45:56.674Z",
+      "notes": "",
+      "position": {
+        "lat": "39.470125122358176",
+        "lng": "-4.94384765625"
+      }
     }
   ]
 }

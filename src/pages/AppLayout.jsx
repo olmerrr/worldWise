@@ -8,6 +8,6 @@ export default function AppLayout() {
   return <div className={style.app}>
     <Sidebar/>
     <Map/>
-    {/*<User />*/}
+    <User />
   </div>
 }
