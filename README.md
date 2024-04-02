@@ -1,4 +1,9 @@
 # React + Vite + json-server
+# firstly use json-server use
+npm run server
+
+# for start app use
+npm run dev
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

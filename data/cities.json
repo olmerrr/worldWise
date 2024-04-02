@@ -95,6 +95,18 @@
         "lat": "39.470125122358176",
         "lng": "-4.94384765625"
       }
+    },
+    {
+      "id": "a656",
+      "cityName": "Sant Antoni de Portmany",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-04-02T13:18:02.502Z",
+      "notes": "todo",
+      "position": {
+        "lat": "38.95940879245423",
+        "lng": "1.40625"
+      }
     }
   ]
 }
